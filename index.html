@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 <style>
 /* ── TOKENS ── */
 :root {
@@ -44,7 +45,6 @@ a{text-decoration:none;color:inherit;}
 ul{list-style:none;}
 .container{max-width:1080px;margin:0 auto;padding:0 28px;}
 
-/* ── SCROLL OFFSET for fixed nav ── */
 #works, #background, #contact {
   scroll-margin-top: calc(var(--nav-h) + 20px);
 }
@@ -87,8 +87,7 @@ nav {
 .hero{min-height:100vh;display:flex;align-items:center;padding-top:var(--nav-h);position:relative;z-index:1;}
 .hero-inner{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center;width:100%;padding:60px 28px;max-width:1080px;margin:0 auto;}
 .hero-greeting{display:inline-flex;align-items:center;gap:10px;font-size:.82rem;font-weight:600;color:var(--a2);background:var(--a-dim);border:1px solid rgba(255,255,255,0.1);padding:5px 13px;border-radius:100px;margin-bottom:22px;transition:background .4s,color .4s;}
-.wave{display:inline-block;animation:wave 2.4s ease-in-out infinite;transform-origin:70% 70%;}
-@keyframes wave{0%,100%{transform:rotate(0);}20%{transform:rotate(18deg);}40%{transform:rotate(-10deg);}60%{transform:rotate(14deg);}80%{transform:rotate(-6deg);}}
+.hero-greeting i{font-size:1rem;}
 .hero-name{font-size:clamp(2.6rem,5vw,4.6rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:14px;}
 .hero-name .highlight{background:linear-gradient(135deg,var(--a2) 0%,var(--green) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:background .4s;}
 .hero-role{font-family:var(--mono);font-size:.95rem;color:var(--muted);margin-bottom:22px;min-height:1.5em;}
@@ -133,7 +132,7 @@ nav {
 .works-list{display:flex;flex-direction:column;gap:14px;}
 .card-featured{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:border-color .25s,box-shadow .25s;}
 .card-featured:hover{border-color:var(--a1);box-shadow:0 8px 48px var(--a-glow);}
-.cf-inner{display:grid;grid-template-columns:1fr 300px;}
+.cf-inner{display:block;}
 .cf-left{padding:36px 40px;}
 .cf-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.68rem;color:var(--green);letter-spacing:.1em;background:var(--green-dim);border:1px solid rgba(255,255,255,0.08);padding:4px 11px;border-radius:100px;margin-bottom:18px;transition:color .4s,background .4s;}
 .cf-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;transition:background .4s;}
@@ -142,13 +141,9 @@ nav {
 .cf-desc{font-size:.88rem;color:var(--muted);line-height:1.85;margin-bottom:20px;}
 .cf-features{display:flex;flex-direction:column;gap:7px;margin-bottom:24px;}
 .cf-feature{display:flex;align-items:center;gap:9px;font-size:.83rem;color:var(--muted);}
-.cf-feature::before{content:'✓';display:flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;background:var(--green-dim);color:var(--green);font-size:.6rem;flex-shrink:0;font-weight:700;transition:background .4s,color .4s;}
+.cf-feature i{display:flex;align-items:center;justify-content:center;width:17px;height:17px;min-width:17px;border-radius:50%;background:var(--green-dim);color:var(--green);font-size:.65rem;flex-shrink:0;transition:background .4s,color .4s;}
 .cf-stack{display:flex;flex-wrap:wrap;gap:6px;}
 .cf-tag{font-family:var(--mono);font-size:.66rem;padding:3px 9px;border-radius:6px;background:var(--a-dim);color:var(--a2);border:1px solid rgba(255,255,255,0.08);transition:background .4s,color .4s;}
-/* cf-right now uses the accent color so it adapts to mode changes */
-.cf-right{background:linear-gradient(160deg,var(--bg3) 0%,var(--bg) 100%);border-left:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:36px;}
-.cf-right svg{width:120px;opacity:.28;filter:drop-shadow(0 0 20px var(--a-glow));transition:opacity .3s,filter .4s;}
-.card-featured:hover .cf-right svg{opacity:.52;}
 
 .work-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 28px;display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start;transition:border-color .2s,transform .2s,box-shadow .2s;}
 .work-card:hover{border-color:var(--a1);transform:translateY(-2px);box-shadow:0 6px 28px var(--a-glow);}
@@ -162,19 +157,18 @@ nav {
 
 /* ── GRAPHIC DESIGN PANEL ── */
 .design-intro{font-size:1rem;color:var(--muted);line-height:1.85;max-width:640px;margin-bottom:40px;}
-/* design-placeholder: no default aspect-ratio — set per card inline */
 .design-placeholder{background:var(--card);border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
 .design-placeholder:hover{border-color:var(--a1);transform:translateY(-3px);box-shadow:0 8px 32px var(--a-glow);}
 .design-placeholder::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--a-dim),transparent);opacity:0;transition:opacity .3s;}
 .design-placeholder:hover::before{opacity:1;}
-/* Design gallery: left col narrower (posters), right col wider (covers) */
 .design-gallery{display:grid;grid-template-columns:1fr 2fr;gap:14px;margin-bottom:40px;}
 .design-col{display:grid;gap:14px;}
 
 .design-skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
 .design-skill-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s;}
 .design-skill-card:hover{border-color:var(--a1);}
-.dsc-icon{font-size:1.6rem;flex-shrink:0;}
+.dsc-icon{font-size:1.6rem;flex-shrink:0;color:var(--a2);display:flex;align-items:center;transition:color .4s;}
+.dsc-icon i{font-size:1.6rem;}
 .dsc-title{font-size:.95rem;font-weight:700;margin-bottom:4px;}
 .dsc-desc{font-size:.82rem;color:var(--muted);line-height:1.7;}
 
@@ -182,7 +176,8 @@ nav {
 .music-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .music-main{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px;display:flex;gap:20px;align-items:flex-start;transition:border-color .2s;}
 .music-main:hover{border-color:var(--a1);}
-.music-icon{font-size:2.2rem;flex-shrink:0;margin-top:2px;}
+.music-icon{font-size:2.2rem;flex-shrink:0;margin-top:2px;color:var(--a2);display:flex;align-items:center;transition:color .4s;}
+.music-icon i{font-size:2.2rem;}
 .music-title{font-size:1.15rem;font-weight:700;letter-spacing:-.01em;margin-bottom:4px;}
 .music-org{font-family:var(--mono);font-size:.72rem;color:var(--a2);margin-bottom:12px;transition:color .4s;}
 .music-duration{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
@@ -192,11 +187,13 @@ nav {
 .music-side{display:flex;flex-direction:column;gap:14px;}
 .music-tiktok{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;gap:16px;align-items:flex-start;flex:1;transition:border-color .2s;}
 .music-tiktok:hover{border-color:var(--a1);}
-.tiktok-icon{font-size:1.7rem;flex-shrink:0;margin-top:2px;}
+.tiktok-icon{font-size:1.7rem;flex-shrink:0;margin-top:2px;color:var(--a2);display:flex;align-items:center;transition:color .4s;}
+.tiktok-icon i{font-size:1.7rem;}
 .tiktok-title{font-size:.98rem;font-weight:700;margin-bottom:3px;}
 .tiktok-sub{font-family:var(--mono);font-size:.7rem;color:var(--a2);margin-bottom:10px;transition:color .4s;}
 .tiktok-desc{font-size:.83rem;color:var(--muted);line-height:1.75;}
 .music-note{background:var(--a-dim);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px 20px;display:flex;align-items:flex-start;gap:10px;font-size:.83rem;color:var(--muted);line-height:1.7;transition:background .4s;}
+.music-note i{color:var(--a2);font-size:1rem;flex-shrink:0;margin-top:2px;}
 
 /* ── BACKGROUND ── */
 .bg-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
@@ -207,6 +204,7 @@ nav {
 .edu-degree{font-size:1.05rem;font-weight:700;letter-spacing:-.01em;margin-bottom:5px;}
 .edu-school{font-size:.83rem;color:var(--muted);line-height:1.6;margin-bottom:12px;}
 .edu-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.66rem;color:var(--green);background:var(--green-dim);border:1px solid rgba(255,255,255,0.08);padding:3px 9px;border-radius:100px;transition:color .4s,background .4s;}
+.edu-badge i{font-size:.75rem;}
 .cert-list{display:flex;flex-direction:column;gap:16px;}
 .cert-item{padding-bottom:16px;border-bottom:1px solid var(--line);}
 .cert-item:last-child{border:none;padding:0;}
@@ -222,21 +220,42 @@ nav {
 .contact-links{display:flex;flex-direction:column;gap:9px;}
 .contact-link{display:flex;align-items:center;gap:12px;padding:13px 18px;background:var(--bg3);border:1px solid var(--line);border-radius:11px;font-size:.85rem;font-weight:500;transition:border-color .2s,background .2s;}
 .contact-link:hover{border-color:var(--a2);background:var(--a-dim);}
-.contact-link-icon{width:34px;height:34px;border-radius:9px;background:var(--a-dim);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;transition:background .4s;}
+.contact-link-icon{width:34px;height:34px;border-radius:9px;background:var(--a-dim);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:background .4s;color:var(--a2);}
+.contact-link-icon i{font-size:1rem;}
 .contact-side{display:flex;flex-direction:column;gap:12px;}
-.loc-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;}
-.loc-label{font-family:var(--mono);font-size:.65rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;}
-.loc-name{font-size:1.15rem;font-weight:700;margin-bottom:3px;}
-.loc-sub{font-family:var(--mono);font-size:.72rem;color:var(--muted);}
-.avail-full{background:var(--green-dim);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:14px;transition:background .4s;}
-.avail-full-text{font-weight:700;font-size:.92rem;color:var(--green);transition:color .4s;}
-.avail-full-sub{font-size:.78rem;color:var(--muted);margin-top:1px;}
+
+/* ── RESPONSE CARD ── */
+.response-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 26px;}
+.response-header{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.response-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;box-shadow:0 0 0 3px var(--green-dim);animation:pulse 2s infinite;transition:background .4s,box-shadow .4s;}
+.response-title{font-size:.83rem;font-weight:700;}
+.response-rows{display:flex;flex-direction:column;gap:11px;}
+.response-row{display:flex;align-items:center;gap:12px;}
+.response-row i{font-size:1rem;color:var(--a2);flex-shrink:0;width:18px;transition:color .4s;}
+.response-row-label{font-family:var(--mono);font-size:.68rem;color:var(--muted);min-width:90px;}
+.response-row-val{font-size:.82rem;font-weight:600;}
+
+/* ── FUN FACT CARD ── */
+.funfact-card{background:var(--a-dim);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:22px 24px;transition:background .4s;}
+.funfact-header{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.65rem;color:var(--a2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;transition:color .4s;}
+.funfact-header i{font-size:.85rem;}
+.funfact-text{font-size:.88rem;color:var(--muted);line-height:1.8;}
+.funfact-text strong{color:var(--text);font-weight:600;}
 
 /* ── FOOTER ── */
 footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;}
 .footer-copy{font-family:var(--mono);font-size:.68rem;color:var(--muted2);}
-.footer-heart{font-family:var(--mono);font-size:.68rem;color:var(--muted2);}
-.footer-heart span{color:var(--a2);transition:color .4s;}
+.footer-heart{font-family:var(--mono);font-size:.68rem;color:var(--muted2);display:flex;align-items:center;gap:4px;}
+.footer-heart i{color:var(--a2);font-size:.75rem;transition:color .4s;}
+
+/* ── WORKS FILTER ── */
+.works-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;}
+.filter-btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.78rem;font-weight:600;padding:7px 16px;border-radius:100px;cursor:pointer;background:var(--bg3);color:var(--muted);border:1px solid var(--line);transition:background .2s,color .2s,border-color .2s,transform .15s;}
+.filter-btn:hover{transform:translateY(-1px);border-color:var(--a2);color:var(--a2);}
+.filter-btn.active{background:var(--a-dim);color:var(--a2);border-color:rgba(255,255,255,0.12);}
+.filter-btn .filter-count{font-family:var(--mono);font-size:.65rem;background:var(--bg);padding:1px 6px;border-radius:100px;color:var(--muted);transition:background .2s,color .2s;}
+.filter-btn.active .filter-count{background:var(--a1);color:#fff;}
+.work-card.hidden{display:none;}
 
 /* ── FADE ── */
 .fade-up{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
@@ -251,10 +270,7 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
   .mode-switcher{order:2;grid-column:1/-1;justify-content:center;padding-top:8px;border-top:1px solid var(--line);}
   .hero-inner{grid-template-columns:1fr;padding:40px 28px;gap:36px;}
   .hero-aside{flex-direction:row;flex-wrap:wrap;min-width:unset;}
-  /* 2x2 stat grid on mobile, not 4 across */
   .stat-cards{grid-template-columns:1fr 1fr;}
-  .cf-inner{grid-template-columns:1fr;}
-  .cf-right{border-left:none;border-top:1px solid var(--line);padding:28px;min-height:140px;}
   .work-card{grid-template-columns:1fr;gap:10px;}
   .bg-grid,.contact-grid,.music-grid{grid-template-columns:1fr;}
   .design-gallery{grid-template-columns:1fr;}
@@ -290,7 +306,7 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
 <section class="hero">
   <div class="hero-inner">
     <div class="fade-up">
-      <div class="hero-greeting"><span class="wave">👋</span> <span>Hey there, I'm Chester</span></div>
+      <div class="hero-greeting"><i class="ti ti-hand-stop" aria-hidden="true"></i> <span>Hey there, I'm Chester</span></div>
       <h1 class="hero-name">Developer,<br>Builder, &<br><span class="highlight" id="hero-highlight">Problem Solver.</span></h1>
       <div class="hero-role"><span id="type-text"></span><span class="blink"></span></div>
       <p class="hero-bio" id="hero-bio">I build practical, purposeful software — from inventory systems to mobile apps. I enjoy turning real-world problems into clean, working solutions.</p>
@@ -337,51 +353,23 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
 
     <!-- DEV PANEL -->
     <div class="mode-panel active" id="panel-dev">
-      <div class="works-list">
-        <div class="card-featured fade-up">
-          <div class="cf-inner">
-            <div class="cf-left">
-              <div class="cf-badge"><span class="cf-badge-dot"></span>Personal Project — 2025</div>
-              <div class="cf-title">ChordVault</div>
-              <div class="cf-sub">.NET MAUI · Firebase · Mobile App</div>
-              <p class="cf-desc">A mobile app for musicians and worship teams to store, organize, and share song chords and lyrics. Built with real-time group collaboration — create a group, share an invite code, and your whole team has access.</p>
-              <div class="cf-features">
-                <div class="cf-feature">Firebase Auth — zero friction anonymous sign-in</div>
-                <div class="cf-feature">Real-time Firestore sync across all group members</div>
-                <div class="cf-feature">Group join/create with invite code system</div>
-                <div class="cf-feature">Playlist management with shared song libraries</div>
-                <div class="cf-feature">Dark UI built entirely from scratch in XAML</div>
-              </div>
-              <div class="cf-stack">
-                <span class="cf-tag">.NET MAUI</span><span class="cf-tag">C#</span>
-                <span class="cf-tag">Firebase Auth</span><span class="cf-tag">Cloud Firestore</span>
-                <span class="cf-tag">XAML</span><span class="cf-tag">Android</span>
-              </div>
-            </div>
-            <div class="cf-right">
-              <svg viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="340" cy="340" r="240" fill="none" stroke="#a78bfa" stroke-width="20"/>
-                <rect x="332" y="88" width="16" height="36" rx="4" fill="#a78bfa"/>
-                <rect x="332" y="556" width="16" height="36" rx="4" fill="#a78bfa"/>
-                <rect x="88" y="332" width="36" height="16" rx="4" fill="#a78bfa"/>
-                <rect x="556" y="332" width="36" height="16" rx="4" fill="#a78bfa"/>
-                <rect x="484" y="105" width="16" height="36" rx="4" fill="#a78bfa" transform="rotate(60 492 123)"/>
-                <rect x="180" y="105" width="16" height="36" rx="4" fill="#a78bfa" transform="rotate(-60 188 123)"/>
-                <rect x="484" y="539" width="16" height="36" rx="4" fill="#a78bfa" transform="rotate(-60 492 557)"/>
-                <rect x="180" y="539" width="16" height="36" rx="4" fill="#a78bfa" transform="rotate(60 188 557)"/>
-                <circle cx="340" cy="340" r="180" fill="none" stroke="#a78bfa" stroke-width="8" opacity="0.35"/>
-                <circle cx="340" cy="150" r="14" fill="none" stroke="#a78bfa" stroke-width="8"/>
-                <circle cx="340" cy="530" r="14" fill="none" stroke="#a78bfa" stroke-width="8"/>
-                <circle cx="150" cy="340" r="14" fill="none" stroke="#a78bfa" stroke-width="8"/>
-                <circle cx="530" cy="340" r="14" fill="none" stroke="#a78bfa" stroke-width="8"/>
-                <text x="340" y="388" font-family="'Helvetica Neue',Arial,sans-serif" font-size="148" font-weight="700" fill="#a78bfa" text-anchor="middle" letter-spacing="-4">CV</text>
-                <rect x="290" y="552" width="100" height="26" rx="13" fill="#a78bfa"/>
-              </svg>
-            </div>
+      <div class="works-filter">
+        <button class="filter-btn active" data-filter="all" onclick="filterWorks('all')">Show All <span class="filter-count">4</span></button>
+        <button class="filter-btn" data-filter="professional" onclick="filterWorks('professional')">Professional Work <span class="filter-count">1</span></button>
+        <button class="filter-btn" data-filter="personal" onclick="filterWorks('personal')">Personal Projects <span class="filter-count">1</span></button>
+        <button class="filter-btn" data-filter="freelance" onclick="filterWorks('freelance')">Freelance Projects <span class="filter-count">2</span></button>
+      </div>
+      <div class="works-list" id="works-list">
+        <div class="work-card fade-up" data-category="personal">
+          <div class="wc-left"><div class="wc-year">PERSONAL · 2025</div><div class="wc-client">Personal Project</div></div>
+          <div>
+            <div class="wc-title">ChordVault</div>
+            <p class="wc-desc">A mobile app for musicians and worship teams to store, organize, and share song chords and lyrics. Real-time group collaboration — create a group, share an invite code, and your whole team has access.</p>
+            <div class="wc-tags"><span class="wc-tag">.NET MAUI</span><span class="wc-tag">C#</span><span class="wc-tag">Firebase</span><span class="wc-tag">Firestore</span><span class="wc-tag">Android</span></div>
           </div>
         </div>
 
-        <div class="work-card fade-up">
+        <div class="work-card fade-up" data-category="freelance">
           <div class="wc-left"><div class="wc-year">AUG – SEP 2025</div><div class="wc-client">RDC Hardware</div></div>
           <div>
             <div class="wc-title">Inventory & Records Management System</div>
@@ -390,7 +378,7 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
           </div>
         </div>
 
-        <div class="work-card fade-up">
+        <div class="work-card fade-up" data-category="freelance">
           <div class="wc-left"><div class="wc-year">FEB – DEC 2024</div><div class="wc-client">LOCCF Church</div></div>
           <div>
             <div class="wc-title">Time-In & Financial Record System</div>
@@ -399,12 +387,12 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
           </div>
         </div>
 
-        <div class="work-card fade-up">
+        <div class="work-card fade-up" data-category="professional">
           <div class="wc-left"><div class="wc-year">MAY – SEP 2025</div><div class="wc-client">ECC Gov't Intern</div></div>
           <div>
             <div class="wc-title">Records Management System + IT Support</div>
-            <p class="wc-desc">Document records system for a government agency alongside IT support: hardware troubleshooting, network maintenance, and computer setup.</p>
-            <div class="wc-tags"><span class="wc-tag">PHP</span><span class="wc-tag">IT Support</span><span class="wc-tag">Networking</span></div>
+            <p class="wc-desc">Document records system for a government agency alongside IT support: hardware troubleshooting, network maintenance, and computer setup. Also created digital posters and visual materials for office communications.</p>
+            <div class="wc-tags"><span class="wc-tag">PHP</span><span class="wc-tag">IT Support</span><span class="wc-tag">Networking</span><span class="wc-tag">Graphic Design</span></div>
           </div>
         </div>
       </div>
@@ -414,8 +402,6 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
     <div class="mode-panel" id="panel-design">
       <p class="design-intro">I create digital graphics, posters, and visual layouts — combining technical precision with a feel for clean, communicative design. Used professionally during my government internship and beyond.</p>
 
-      <!-- Gallery: left col = posters (4:3), right col = cover photos (851:315) -->
-      <!-- Each row shares height via CSS grid row sizing — left cards stretch to match right -->
       <div class="design-gallery">
         <div class="design-col">
           <div class="design-placeholder fade-up" style="aspect-ratio:4/3;">
@@ -441,28 +427,28 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
 
       <div class="design-skills-grid fade-up">
         <div class="design-skill-card">
-          <div class="dsc-icon">🖌️</div>
+          <div class="dsc-icon"><i class="ti ti-brush" aria-hidden="true"></i></div>
           <div>
             <div class="dsc-title">Graphic Design</div>
             <div class="dsc-desc">Posters, banners, and digital layouts for events, office communications, and social media. Clean, purposeful visual work.</div>
           </div>
         </div>
         <div class="design-skill-card">
-          <div class="dsc-icon">📐</div>
+          <div class="dsc-icon"><i class="ti ti-ruler-2" aria-hidden="true"></i></div>
           <div>
             <div class="dsc-title">UI / App Design</div>
             <div class="dsc-desc">Designed the full UI for ChordVault from scratch — dark theme, custom components, and consistent design language in XAML.</div>
           </div>
         </div>
         <div class="design-skill-card">
-          <div class="dsc-icon">🌐</div>
+          <div class="dsc-icon"><i class="ti ti-world" aria-hidden="true"></i></div>
           <div>
             <div class="dsc-title">Web Design</div>
             <div class="dsc-desc">Frontend layouts using HTML, CSS, and Bootstrap. Comfortable translating visual ideas into responsive, working interfaces.</div>
           </div>
         </div>
         <div class="design-skill-card">
-          <div class="dsc-icon">🏛️</div>
+          <div class="dsc-icon"><i class="ti ti-building-bank" aria-hidden="true"></i></div>
           <div>
             <div class="dsc-title">Government Comms</div>
             <div class="dsc-desc">Created digital posters and visual materials for the ECC Regional Extension Unit during my internship.</div>
@@ -475,7 +461,7 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
     <div class="mode-panel" id="panel-music">
       <div class="music-grid">
         <div class="music-main fade-up">
-          <div class="music-icon">🎸</div>
+          <div class="music-icon"><i class="ti ti-guitar-pick" aria-hidden="true"></i></div>
           <div class="music-body">
             <div class="music-title">Church Musician</div>
             <div class="music-org">Love of Christ Christian Fellowship (LOCCF)</div>
@@ -488,15 +474,15 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
         </div>
         <div class="music-side">
           <div class="music-tiktok fade-up" style="transition-delay:.08s">
-            <div class="tiktok-icon">🎵</div>
+            <div class="tiktok-icon"><i class="ti ti-music" aria-hidden="true"></i></div>
             <div>
               <div class="tiktok-title">TikTok Cover Artist</div>
-              <div class="tiktok-sub">@chesterdamian · Song covers</div>
+              <div class="tiktok-sub">@overdriven.chester · Song covers</div>
               <p class="tiktok-desc">Posts guitar covers on TikTok — turning a personal passion into a creative outlet and audience beyond Sunday services.</p>
             </div>
           </div>
           <div class="music-note fade-up" style="transition-delay:.14s">
-            <span>💡</span>
+            <i class="ti ti-bulb" aria-hidden="true"></i>
             <span>ChordVault was born from this — a real tool built to solve a real musician's problem. 11 years of worship service turned into a mobile app.</span>
           </div>
         </div>
@@ -515,7 +501,7 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
         <div class="bg-card-title">Education</div>
         <div class="edu-degree">BS Information Technology</div>
         <div class="edu-school">Don Mariano Marcos Memorial State University<br>Mid La Union Campus · Major in Service Management</div>
-        <span class="edu-badge">🏅 Dean's List 2024</span>
+        <span class="edu-badge"><i class="ti ti-award" aria-hidden="true"></i> Dean's List 2024</span>
       </div>
       <div class="bg-card">
         <div class="bg-card-title">Certifications</div>
@@ -526,7 +512,7 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
           </div>
           <div class="cert-item">
             <div class="cert-name">PhilNITS Passport Exam</div>
-            <div class="cert-sub">Passer · IT Engineers Examination</div>
+            <div class="cert-sub">Passer · IT Passport Examination</div>
           </div>
         </div>
       </div>
@@ -544,26 +530,59 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
         <p class="contact-note">Open to freelance projects, collaborations, and full-time opportunities. I usually respond within 24 hours — don't be shy!</p>
         <div class="contact-links">
           <a href="mailto:chesterjohndamian@gmail.com" class="contact-link">
-            <span class="contact-link-icon">✉️</span>chesterjohndamian@gmail.com
+            <span class="contact-link-icon"><i class="ti ti-mail" aria-hidden="true"></i></span>chesterjohndamian@gmail.com
           </a>
           <a href="tel:09916991567" class="contact-link">
-            <span class="contact-link-icon">📱</span>09916991567
+            <span class="contact-link-icon"><i class="ti ti-device-mobile" aria-hidden="true"></i></span>09916991567
+          </a>
+          <a href="https://www.linkedin.com/in/chester-john-damian-79a5b52b0" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></span>linkedin.com/in/chester-john-damian
+          </a>
+          <a href="https://github.com/Chester-47" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon"><i class="ti ti-brand-github" aria-hidden="true"></i></span>github.com/Chester-47
           </a>
         </div>
       </div>
       <div class="contact-side fade-up" style="transition-delay:.1s">
-        <div class="loc-card">
-          <div class="loc-label">Based in</div>
-          <div class="loc-name">Naguilian, La Union</div>
-          <div class="loc-sub">Philippines · UTC+8</div>
-        </div>
-        <div class="avail-full">
-          <div class="avail-dot" style="width:11px;height:11px;flex-shrink:0;"></div>
-          <div>
-            <div class="avail-full-text">Available for work</div>
-            <div class="avail-full-sub">Freelance & full-time roles</div>
+
+        <!-- Response time card -->
+        <div class="response-card">
+          <div class="response-header">
+            <div class="response-dot"></div>
+            <div class="response-title">Quick to respond</div>
+          </div>
+          <div class="response-rows">
+            <div class="response-row">
+              <i class="ti ti-clock" aria-hidden="true"></i>
+              <span class="response-row-label">Response time</span>
+              <span class="response-row-val">Within 24 hours</span>
+            </div>
+            <div class="response-row">
+              <i class="ti ti-map-pin" aria-hidden="true"></i>
+              <span class="response-row-label">Timezone</span>
+              <span class="response-row-val">UTC+8 · Philippines</span>
+            </div>
+            <div class="response-row">
+              <i class="ti ti-briefcase" aria-hidden="true"></i>
+              <span class="response-row-label">Open for</span>
+              <span class="response-row-val">Freelance & full-time</span>
+            </div>
+            <div class="response-row">
+              <i class="ti ti-language" aria-hidden="true"></i>
+              <span class="response-row-label">Languages</span>
+              <span class="response-row-val">Filipino, English</span>
+            </div>
           </div>
         </div>
+
+        <!-- Fun fact card -->
+        <div class="funfact-card">
+          <div class="funfact-header">
+            <i class="ti ti-sparkles" aria-hidden="true"></i> Fun fact
+          </div>
+          <p class="funfact-text">The app I built — <strong>ChordVault</strong> — was born out of frustration at Sunday rehearsals. Couldn't find a good chord app, so I made one. Still use it every week.</p>
+        </div>
+
       </div>
     </div>
   </div>
@@ -571,20 +590,27 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
 
 <footer>
   <div class="footer-copy">© <span id="footer-year"></span> Chester John Damian</div>
-  <div class="footer-heart">Built with <span>♥</span> and too much coffee.</div>
+  <div class="footer-heart">Built with <i class="ti ti-heart" aria-hidden="true"></i> and too much coffee.</div>
 </footer>
 
 <script>
-// Dynamic footer year
 document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+function filterWorks(filter) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+  document.querySelectorAll('#works-list .work-card').forEach(card => {
+    const match = filter === 'all' || card.dataset.category === filter;
+    card.classList.toggle('hidden', !match);
+  });
+}
 
 const modes = {
   dev: {
-    types: ['Web Developer.','Mobile Developer.','IT Specialist.'],
+    types: ['Web Developer.','Mobile Developer.','IT Support.'],
     bio: "I build practical, purposeful software — from inventory systems to mobile apps. I enjoy turning real-world problems into clean, working solutions.",
     cta1: 'See my work →',
     avail: 'Open to work', availSub: 'Freelance & Full-time',
-    stats: [['3+','Projects delivered'],['2','Certifications'],['4','Years in IT'],['∞','Coffee cups']],
+    stats: [['3+','Projects delivered'],['2','Certifications'],['5','Years in IT'],['∞','Coffee cups']],
     skills: ['PHP / MySQL','.NET MAUI','C#','Firebase','JavaScript','Bootstrap','HTML / CSS','IT Support','System Admin'],
     worksLabel: 'Selected Works', worksTitle: "Things I've built",
   },
@@ -598,12 +624,12 @@ const modes = {
     worksLabel: 'Design Work', worksTitle: "Things I've designed",
   },
   music: {
-    types: ['Musician.','Guitarist.','Worship Leader.','TikTok Creator.'],
+    types: ['Musician.','Guitarist.','TikTok Creator.'],
     bio: "11 years playing guitar at LOCCF, and still going. Music is where creativity and community meet — and it's also what inspired ChordVault.",
     cta1: 'See my story →',
     avail: 'Church Musician', availSub: 'LOCCF · Since 2014',
     stats: [['11','Years at LOCCF'],['52+','Weeks/year'],['∞','Songs learned'],['2','Built an app for it']],
-    skills: ['Guitar','Worship Music','Chord Arrangement','Song Covers','TikTok','Stage Performance','Ear Training'],
+    skills: ['Guitar','Worship Music','Chord Arrangement','Song Covers','TikTok','Stage Performance'],
     worksLabel: 'Music Experience', worksTitle: 'My musical journey',
   }
 };
