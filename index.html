@@ -45,7 +45,7 @@ a{text-decoration:none;color:inherit;}
 ul{list-style:none;}
 .container{max-width:1080px;margin:0 auto;padding:0 28px;}
 
-#works, #background, #contact {
+#works, #background, #certificates, #contact {
   scroll-margin-top: calc(var(--nav-h) + 20px);
 }
 
@@ -242,6 +242,26 @@ nav {
 .funfact-text{font-size:.88rem;color:var(--muted);line-height:1.8;}
 .funfact-text strong{color:var(--text);font-weight:600;}
 
+/* ── CERTIFICATES ── */
+.certs-outer{overflow:hidden;position:relative;mask-image:linear-gradient(to right,transparent,black 80px,black calc(100% - 80px),transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 80px,black calc(100% - 80px),transparent);}
+.certs-track{display:flex;gap:14px;width:max-content;animation:certs-scroll 40s linear infinite;}
+.certs-track:hover{animation-play-state:paused;}
+@keyframes certs-scroll{0%{transform:translateX(0);}100%{transform:translateX(var(--certs-shift));}}
+.cert-card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .25s,transform .2s,box-shadow .25s;display:flex;flex-direction:column;flex:0 0 320px;}
+.cert-card:hover{border-color:var(--a1);transform:translateY(-3px);box-shadow:0 8px 36px var(--a-glow);}
+.cert-img-wrap{width:100%;aspect-ratio:16/9;background:var(--bg3);position:relative;overflow:hidden;border-bottom:1px solid var(--line);}
+.cert-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.cert-img-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.cert-img-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+.cert-img-placeholder i{font-size:2.2rem;color:var(--muted2);}
+.cert-img-placeholder span{font-family:var(--mono);font-size:.65rem;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;}
+.cert-body{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:4px;}
+.cert-issuer{font-family:var(--mono);font-size:.62rem;color:var(--a2);letter-spacing:.12em;text-transform:uppercase;transition:color .4s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cert-title{font-size:.82rem;font-weight:700;letter-spacing:-.01em;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.cert-meta{display:flex;align-items:center;gap:8px;margin-top:2px;}
+.cert-date{font-family:var(--mono);font-size:.63rem;color:var(--muted);}
+.cert-badge{font-family:var(--mono);font-size:.6rem;font-weight:600;padding:2px 8px;border-radius:100px;background:var(--green-dim);color:var(--green);border:1px solid rgba(255,255,255,0.08);transition:background .4s,color .4s;}
+
 /* ── FOOTER ── */
 footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;}
 .footer-copy{font-family:var(--mono);font-size:.68rem;color:var(--muted2);}
@@ -299,6 +319,7 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
   <ul class="nav-links">
     <li><a href="#works">Works</a></li>
     <li><a href="#background">Background</a></li>
+    <li><a href="#certificates">Trainings</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -520,6 +541,128 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
   </div>
 </section>
 
+<section id="certificates" class="section">
+  <div class="container">
+    <div class="section-label fade-up">Growth & Credentials</div>
+    <h2 class="section-title fade-up">Trainings & Certifications</h2>
+    <div class="certs-outer fade-up">
+      <div class="certs-track" id="certs-track">
+
+        <div class="cert-card">
+          <div class="cert-img-wrap">
+            <iframe src="certs/1.pdf" loading="lazy"></iframe>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">Asia Open Ran Academy</div>
+            <div class="cert-title">Introduction to Edge Computing</div>
+            <div class="cert-meta"><span class="cert-date">2024</span><span class="cert-badge">Completion</span></div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-img-wrap">
+            <iframe src="certs/2.pdf" loading="lazy"></iframe>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">Asia Open Ran Academy</div>
+            <div class="cert-title">Introduction to Radio Access Network</div>
+            <div class="cert-meta"><span class="cert-date">2024</span><span class="cert-badge">Completion</span></div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-img-wrap">
+            <iframe src="certs/3.pdf" loading="lazy"></iframe>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">DOST</div>
+            <div class="cert-title">TechTIPS 2022: Hack-proofing Your Digital World</div>
+            <div class="cert-meta"><span class="cert-date">2024</span><span class="cert-badge">Completion</span></div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-img-wrap">
+            <iframe src="certs/4.pdf" loading="lazy"></iframe>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">International Experts Sharing</div>
+            <div class="cert-title">The Scope and Future of Intelligent Technology Application</div>
+            <div class="cert-meta"><span class="cert-date">2024</span><span class="cert-badge">Completion</span></div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-img-wrap">
+            <iframe src="certs/5.pdf" loading="lazy"></iframe>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">PICSPRO</div>
+            <div class="cert-title">A Look at the Fortinet 2024 Global Cybersecurity Skills Gap Report</div>
+            <div class="cert-meta"><span class="cert-date">2024</span><span class="cert-badge">Completion</span></div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-img-wrap">
+            <iframe src="certs/6.pdf" loading="lazy"></iframe>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">PICSPRO</div>
+            <div class="cert-title">Cybersecurity Policy and Governance: Integrating Policy Studies into Academic Programs</div>
+            <div class="cert-meta"><span class="cert-date">2024</span><span class="cert-badge">Completion</span></div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-img-wrap">
+            <img src="certs/7.png" alt="Data Management Workshop">
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">MapaKalamidad.ph</div>
+            <div class="cert-title">Data Management Workshop</div>
+            <div class="cert-meta"><span class="cert-date">2024</span><span class="cert-badge">Completion</span></div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-img-wrap">
+            <iframe src="certs/8.pdf" loading="lazy"></iframe>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">PICSPRO</div>
+            <div class="cert-title">The Reputation Blueprint: Building a Strong Digital Foundation</div>
+            <div class="cert-meta"><span class="cert-date">2024</span><span class="cert-badge">Completion</span></div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-img-wrap">
+            <iframe src="certs/9.pdf" loading="lazy"></iframe>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">PICSPRO</div>
+            <div class="cert-title">The Role of Cybersecurity Organizations in Empowering Our Schools and Communities</div>
+            <div class="cert-meta"><span class="cert-date">2024</span><span class="cert-badge">Completion</span></div>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-img-wrap">
+            <iframe src="certs/10.pdf" loading="lazy"></iframe>
+          </div>
+          <div class="cert-body">
+            <div class="cert-issuer">Asia Open Ran Academy</div>
+            <div class="cert-title">Software-Defined Networking, Openflow, NFV, & Open RAN</div>
+            <div class="cert-meta"><span class="cert-date">2024</span><span class="cert-badge">Completion</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="section">
   <div class="container">
     <div class="section-label fade-up">Say hello</div>
@@ -545,7 +688,6 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
       </div>
       <div class="contact-side fade-up" style="transition-delay:.1s">
 
-        <!-- Response time card -->
         <div class="response-card">
           <div class="response-header">
             <div class="response-dot"></div>
@@ -575,7 +717,6 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
           </div>
         </div>
 
-        <!-- Fun fact card -->
         <div class="funfact-card">
           <div class="funfact-header">
             <i class="ti ti-sparkles" aria-hidden="true"></i> Fun fact
@@ -594,6 +735,22 @@ footer{padding:24px 28px;border-top:1px solid var(--line);display:flex;justify-c
 </footer>
 
 <script>
+// Infinite auto-scroll loop for certs
+(function(){
+  const track = document.getElementById('certs-track');
+  if(!track) return;
+  const origCards = Array.from(track.children);
+  origCards.forEach(card => track.appendChild(card.cloneNode(true)));
+  function setShift(){
+    const gap = 14;
+    const cardW = 320;
+    const n = origCards.length;
+    track.style.setProperty('--certs-shift', -(n * (cardW + gap)) + 'px');
+  }
+  setShift();
+  window.addEventListener('resize', setShift);
+})();
+
 document.getElementById('footer-year').textContent = new Date().getFullYear();
 
 function filterWorks(filter) {
